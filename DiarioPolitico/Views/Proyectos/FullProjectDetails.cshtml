@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DiarioPolitico.Models.Comentario>
+
+@{
+    ViewBag.Title = "FullProjectDetails";
+}
+
+<h2>@ViewBag.proyect.titulo</h2>
+
+<p>Descipcion: @ViewBag.proyect.detalle</p>
+
+<p>Aprobacion : @ViewBag.proyect.puntos %</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.like)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.like)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    <p>
+        @Html.ActionLink("Comentar", "CreateComment" , new { id=ViewBag.proyect.idProyecto })
+    </p>
+</table>
